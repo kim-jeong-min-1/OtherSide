@@ -147,7 +147,9 @@ public partial class Controller : MonoBehaviour
                     path.GetComponent<TelePort>().GetTelePortAction(transform, StopWalking),
 
                     WalkableType.ClearPortal =>
-                    path.GetComponent<ClearPortal>().GetWalkPointAction(transform)
+                    path.GetComponent<ClearPortal>().GetWalkPointAction(transform),
+
+                    _=> null
                 };
 
                 if (walkPathQueue.Count == 0 && path.type != WalkableType.TelePort)

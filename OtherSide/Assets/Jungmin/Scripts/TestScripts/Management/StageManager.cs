@@ -38,7 +38,7 @@ public abstract class StageManager : MonoBehaviour
     protected virtual void Update()
     {
         if (isClearStage) return;
-        ConnectPathOfStage();
+        if(pathConditions.Count > 0) ConnectPathOfStage();
         ClearCheck();
     }
 

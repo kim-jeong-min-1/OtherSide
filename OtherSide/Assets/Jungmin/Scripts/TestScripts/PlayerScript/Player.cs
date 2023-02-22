@@ -81,7 +81,7 @@ public class Player : Controller
     private void TouchPointEffect(Transform target)
     {
         var pos = target.GetComponent<Walkable>().GetWalkPoint();
-        var effectPos = new Vector3(pos.x + 0.4f, pos.y + 0.4f, pos.z + 0.4f);
+        var effectPos = new Vector3(pos.x, pos.y + 0.2f, pos.z);
 
         var effect = Instantiate(touchPoint, effectPos, Quaternion.identity);
         Destroy(effect.gameObject, 2f);
