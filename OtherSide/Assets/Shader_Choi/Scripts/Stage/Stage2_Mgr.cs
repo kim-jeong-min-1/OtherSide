@@ -35,7 +35,7 @@ public class Stage2_Mgr : MonoBehaviour
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("RE_Stage3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Stage2_1");
 
         yield break;
     }

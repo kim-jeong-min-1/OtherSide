@@ -36,6 +36,9 @@ public class Stage1_1 : StageManager
             isInteract = true;
             for (int i = 0; i < 2; i++) interactNodes[i].node.neighborNode[interactNodes[i].index].isActive = true;
 
+            SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.8f, 1, 2.5f);
+            StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
+
             interactObject.transform.DORotate(new Vector3(0f, -90f, 0f), 2.5f).SetEase(Ease.OutQuad);
             interactObject.transform.DOMove(new Vector3(9.8f, -7.376f, 5.22f), 2.5f).SetEase(Ease.OutQuad);
         }
@@ -65,7 +68,7 @@ public class Stage1_1 : StageManager
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);
 
-        nextSceneName = "Last_Stage2";
+        nextSceneName = "Stage2";
         GameManager.Instance.LoadStage(nextSceneName);
 
         yield break;

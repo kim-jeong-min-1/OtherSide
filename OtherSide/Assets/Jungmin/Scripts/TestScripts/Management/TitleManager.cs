@@ -52,7 +52,7 @@ public class TitleManager : MonoBehaviour
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3);
         SoundManager.Instance.StopBGM();
-        SceneManager.LoadScene("RE_Stage1");
+        SceneManager.LoadScene("Stage1");
     }
 
     IEnumerator TextAlpha(int sign)

@@ -63,7 +63,7 @@ public class Stage2 : MonoBehaviour
     {
         StartCoroutine(Cam_Ctrl.FadeOut(GameObject.Find("FadeInOut").GetComponent<Image>(), 2));
         yield return new WaitForSecondsRealtime(2);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Re_Stage3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Stage2_1");
 
         yield break;
     }

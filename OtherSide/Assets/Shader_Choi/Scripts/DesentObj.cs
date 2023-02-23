@@ -18,7 +18,7 @@ public class DesentObj : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class DesentObj : MonoBehaviour
         {
             StartCoroutine(Desent());
         }
-        else if(p1.currentNode == stage4_Mgr.EndPoint2 || p2.currentNode == stage4_Mgr.EndPoint1)
+        else if (p1.currentNode == stage4_Mgr.EndPoint2 || p2.currentNode == stage4_Mgr.EndPoint1)
         {
             StartCoroutine(Increase());
         }
@@ -36,9 +36,10 @@ public class DesentObj : MonoBehaviour
 
     private IEnumerator Desent()
     {
-        for (int i = 0; i < Node.neighborNode.Count; i++)
+
+        for (int i = 0; i < playNeighborNode.Length; i++)
         {
-            Node.neighborNode[i].isActive = true;
+            playNeighborNode[i].neighborNode[playNeighborindex[i]].isActive = false;
         }
         SetPlayerParent();
 
@@ -47,23 +48,23 @@ public class DesentObj : MonoBehaviour
         this.gameObject.transform.DOMoveY(MaxY, 3.5f);
         yield return new WaitForSecondsRealtime(3.5f);
 
-        for (int i = 0; i < playNeighborNode.Length; i++)
+        for (int i = 0; i < Node.neighborNode.Count; i++)
         {
-            playNeighborNode[i].neighborNode[playNeighborindex[i]].isActive = false;
+            Node.neighborNode[i].isActive = true;
         }
-
-        
 
         yield break;
     }
 
     private IEnumerator Increase()
     {
+        yield return new WaitForSeconds(1f);
+
         for (int i = 0; i < Node.neighborNode.Count; i++)
         {
             Node.neighborNode[i].isActive = false;
         }
-        this.gameObject.transform.DOMoveY(MinY , 3.5f);
+        this.gameObject.transform.DOMoveY(MinY, 3.5f);
         yield return new WaitForSeconds(3.5f);
 
         for (int i = 0; i < playNeighborNode.Length; i++)
@@ -76,7 +77,7 @@ public class DesentObj : MonoBehaviour
 
     private void SetPlayerParent()
     {
-        if(p1.currentNode == PlayNode)
+        if (p1.currentNode == PlayNode)
         {
             p1.transform.SetParent(transform);
         }

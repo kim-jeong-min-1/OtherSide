@@ -20,7 +20,7 @@ public class Stage5 : StageManager
             if (player1.currentNode == portal[i]) check++;
             if (player2.currentNode == portal[i]) check++;
         }
-
+        
         if(check == 2)
         {
             StageClear();
@@ -43,7 +43,7 @@ public class Stage5 : StageManager
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);
 
-        nextSceneName = "RE_Title";
+        nextSceneName = "Title";
         GameManager.Instance.LoadStage(nextSceneName);
 
         yield break;

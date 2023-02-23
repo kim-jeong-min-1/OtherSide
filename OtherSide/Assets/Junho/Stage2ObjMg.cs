@@ -79,7 +79,7 @@ public class Stage2ObjMg : MonoBehaviour
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("RE_Stage3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Stage3");
 
         yield break;
     }
