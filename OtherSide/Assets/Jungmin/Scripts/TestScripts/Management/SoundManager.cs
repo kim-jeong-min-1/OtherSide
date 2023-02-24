@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public static class SoundEffect
 {
     public static string Vibration= "Vibration";
@@ -33,6 +32,9 @@ public class SoundManager : Singleton<SoundManager>
         audioSource.clip = sfxSounds[soundName];
         audioSource.pitch = speed;
 
+        if(soundName == SoundEffect.Vibration)
+        StartCoroutine(SFXBlur(audioSource, deleteTime));
+
         audioSource.Play();
 
         if(deleteTime != 0)
@@ -41,6 +43,20 @@ public class SoundManager : Singleton<SoundManager>
             return;
         }
         Destroy(audioSource.gameObject, audioSource.clip.length);
+    }
+
+    private IEnumerator SFXBlur(AudioSource source, float deleteTime)
+    {
+        float t = deleteTime;
+
+        while (true)
+        {
+            yield return null;
+
+            if (source == null) yield break;
+            t -= Time.deltaTime;
+            source.volume = t/deleteTime;
+        }
     }
 
     public void PlayBGM(float volum = 0.8f)
