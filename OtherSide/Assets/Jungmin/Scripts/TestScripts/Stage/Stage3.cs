@@ -12,7 +12,8 @@ public class Stage3 : StageManager
 
     private void Start()
     {
-        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(19f, 15.22f, 18.59f), 180f));    
+        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(19f, 15.22f, 18.59f), 180f));
+        SoundManager.Instance.PlayBGM(3, 0.25f);
     }
 
     protected override void Update()
@@ -67,6 +68,7 @@ public class Stage3 : StageManager
 
     private IEnumerator Stage3ClearEvent()
     {
+        SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(1f);
         player1.gameObject.SetActive(false);

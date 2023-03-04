@@ -34,6 +34,7 @@ public class Stage2ObjMg : MonoBehaviour
         }
     }
 
+    private void Start() => SoundManager.Instance.PlayBGM(2, 0.1f);
     [SerializeField] private List<IObserver> list_Observers = new List<IObserver>();
     public void ResisterObserver(IObserver observer)
     {
@@ -75,6 +76,7 @@ public class Stage2ObjMg : MonoBehaviour
 
     IEnumerator Clear()
     {
+        SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);

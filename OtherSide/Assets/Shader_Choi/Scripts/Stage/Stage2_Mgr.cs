@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using Cam_Control;
+using DG.Tweening;
 using Event = ProductionEvent.Event;
 using GameManager = Jungmin.GameManager;
 
@@ -17,6 +16,7 @@ public class Stage2_Mgr : MonoBehaviour
     {
         //StartCoroutine(Cam_Ctrl.Move(Camera.main.gameObject, 
         //    new Vector3(14, 21.73f, 13), 2));
+        StartCoroutine(Stage2_Start());
     }
 
     // Update is called once per frame
@@ -29,8 +29,26 @@ public class Stage2_Mgr : MonoBehaviour
         }
     }
 
+    private IEnumerator Stage2_Start()
+    {
+        yield return new WaitForSeconds(1.5f);
+        var a = StartCoroutine(Event.CameraMove(Camera.main, new Vector3(20.5f, 29.36f, 12.71f), 10f));
+        var b = StartCoroutine(Event.CameraZoom(Camera.main, 6f, 10f));
+        yield return new WaitForSeconds(1.5f);
+        StopCoroutine(a); StopCoroutine(b);
+
+        yield return new WaitForSeconds(1.5f);
+        SoundManager.Instance.PlayBGM(2, 0.1f);
+
+        var c = StartCoroutine(Event.CameraMove(Camera.main, new Vector3(20.46f, 29.36f, 19.46f), 10f));
+        var d = StartCoroutine(Event.CameraZoom(Camera.main, 12.5f, 10f));
+        yield return new WaitForSeconds(1.5f);
+        StopCoroutine(c); StopCoroutine(d);
+    }
+
     private IEnumerator End()
     {
+        SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);

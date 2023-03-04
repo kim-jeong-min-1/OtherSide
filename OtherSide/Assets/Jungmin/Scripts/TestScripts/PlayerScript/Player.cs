@@ -71,7 +71,7 @@ public class Player : Controller
         }
 
         if (playerType != PlayerMoveType.Follow)
-            SoundManager.Instance.PlaySFX(SoundEffect.Walk, 0.1f, 1.3f, walkPathQueue.Count * 0.25f);
+            SoundManager.Instance.PlaySFX(SoundEffect.Walk, 0.8f, 1.3f, walkPathQueue.Count * 0.25f);
 
         if(playerType != PlayerMoveType.Follow) TouchPointEffect(targetNode);
         StartCoroutine(base.FollowPath());

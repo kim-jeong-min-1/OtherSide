@@ -10,7 +10,7 @@ public partial class Controller
     {
         animator.SetBool("isWalk", isWalking);
 
-        if (currentNode.GetComponent<Walkable>().isStair)
-            animator.SetTrigger("isStair");
+        //if (currentNode.GetComponent<Walkable>().isStair)
+        //    animator.SetTrigger("isStair");
     }
 }

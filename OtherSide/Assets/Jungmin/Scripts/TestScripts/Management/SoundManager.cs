@@ -59,11 +59,11 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    public void PlayBGM(float volum = 0.8f)
+    public void PlayBGM(int num = 0, float volum = 0.8f)
     {
         BGM.volume = volum;
 
-        BGM.clip = Bgms[0];
+        BGM.clip = Bgms[num];
         BGM.Play();
     }
 
