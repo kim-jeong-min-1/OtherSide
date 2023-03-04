@@ -94,7 +94,7 @@ public class Stage1_1 : StageManager
             yield return new WaitForSeconds(1 + i);
             obj[i].gameObject.isStatic = true;
         }
-
+        player1.isOn = true; player2.isOn = true;
         StartCoroutine(CloudMove(1));
     }
 }

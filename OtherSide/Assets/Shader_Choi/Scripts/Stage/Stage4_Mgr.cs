@@ -19,7 +19,10 @@ public class Stage4_Mgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Event.CameraMove(Camera.main, new(-15.82f, 18.29f, 16.96f), 180f));
+        StartCoroutine(Event.CameraMove(Camera.main, new(-15.82f, 18.29f, 16.96f), 230f));
+        SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.8f, 0.6f, 3);
+        SoundManager.Instance.PlayBGM(4, 0.1f);
+        //StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
     }
 
     // Update is called once per frame
@@ -37,6 +40,7 @@ public class Stage4_Mgr : MonoBehaviour
 
     private IEnumerator End()
     {
+        SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);

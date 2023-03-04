@@ -13,7 +13,7 @@ public class Stage3 : StageManager
     private void Start()
     {
         StartCoroutine(Event.CameraMove(Camera.main, new Vector3(19f, 15.22f, 18.59f), 180f));
-        SoundManager.Instance.PlayBGM(3, 0.25f);
+        SoundManager.Instance.PlayBGM(3, 0.15f);
     }
 
     protected override void Update()

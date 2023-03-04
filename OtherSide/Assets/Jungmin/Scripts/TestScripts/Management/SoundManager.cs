@@ -16,8 +16,9 @@ public class SoundManager : Singleton<SoundManager>
     public AudioClip[] Sfxs;
     public AudioClip[] Bgms;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         foreach (AudioClip auido in Sfxs)
         {
             sfxSounds.Add(auido.name, auido);

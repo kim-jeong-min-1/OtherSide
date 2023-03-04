@@ -67,6 +67,7 @@ public class Stage1 : StageManager
             obj[i].gameObject.isStatic = true;
         }
 
+        player1.isOn = true; player2.isOn = true;
         StartCoroutine(CloudMove(1));
     }
 }

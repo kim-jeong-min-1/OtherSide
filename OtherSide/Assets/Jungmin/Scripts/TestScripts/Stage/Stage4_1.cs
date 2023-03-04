@@ -46,6 +46,7 @@ public class Stage4_1 : StageManager
     }
     private IEnumerator Stage1ClearEvent()
     {
+        SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(0.08f);
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
@@ -60,6 +61,7 @@ public class Stage4_1 : StageManager
     private void Start()
     {
         curPlayer = player1;
+        SoundManager.Instance.PlayBGM(4, 0.1f);
         StartCoroutine(PlayerAppearance(player1, 0));
         StartCoroutine(Stage4_1Update());
     }

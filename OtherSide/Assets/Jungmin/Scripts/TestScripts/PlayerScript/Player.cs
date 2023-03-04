@@ -16,6 +16,7 @@ public class Player : Controller
     public System.Func<int, bool> MovePlayerDecision = null;
 
     public PlayerMoveType playerType;
+    public bool isOn = true;
     [SerializeField] private Player OtherPlayer = null;
     [SerializeField] GameObject touchPoint;
 
@@ -46,7 +47,7 @@ public class Player : Controller
 
     protected override void TouchScreen()
     {
-        if (playerType == PlayerMoveType.Follow) return;
+        if (playerType == PlayerMoveType.Follow || !isOn) return;
         base.TouchScreen();
     }
 
