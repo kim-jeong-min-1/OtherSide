@@ -25,7 +25,7 @@ EditorBuildSettings:
     guid: 7e3e302a3d40c3641a9ebec9b69598b8
   - enabled: 1
     path: Assets/Scenes/Stage3_1.unity
-    guid: b904ab6dc1d41da47a1d2fd85cf43c9b
+    guid: 066a6a31f89c58f4b92c89b4164e1394
   - enabled: 1
     path: Assets/Scenes/Stage4.unity
     guid: 12c72b52eedbf0141b3d81e2a44f899e
