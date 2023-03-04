@@ -103,6 +103,11 @@ public class Stage3_1MG : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM(3,0.1f);
+    }
+
     private void Update()
     {
         if (isClear == false)

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Event = ProductionEvent.Event;
 using GameManager = Jungmin.GameManager;
-
+using DG.Tweening;
 public class Stage2ObjMg : MonoBehaviour
 {
+    [SerializeField] private Camera cam;
+
     [SerializeField] private Vector3 playerPos;
     [SerializeField] private Controller player1;
     [SerializeField] private Controller player2;
@@ -34,7 +36,12 @@ public class Stage2ObjMg : MonoBehaviour
         }
     }
 
-    private void Start() => SoundManager.Instance.PlayBGM(2, 0.1f);
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM(2, 0.1f);
+
+        cam.transform.DOShakePosition(3f,0.25f);
+    }
     [SerializeField] private List<IObserver> list_Observers = new List<IObserver>();
     public void ResisterObserver(IObserver observer)
     {

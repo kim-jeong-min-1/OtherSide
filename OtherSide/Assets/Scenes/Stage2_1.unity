@@ -7076,6 +7076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0306613a345c54a8b1bf58ab832d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1389709534}
   playerPos: {x: 0, y: 0.24038461, z: -0.000000010507545}
   player1: {fileID: 1571364328}
   player2: {fileID: 515935815}
