@@ -4725,7 +4725,7 @@ PrefabInstance:
         type: 3}
       propertyPath: touchPoint
       value: 
-      objectReference: {fileID: 271197809274399845, guid: 4cd940f92e8cb4742be5184bcee5f0bb,
+      objectReference: {fileID: 4746875610356830821, guid: 13b163c1ce7ff38498cd63ef3b683af3,
         type: 3}
     - target: {fileID: 2181930994205698973, guid: aefb0f1b83d375d4ebb3d294efd0f11f,
         type: 3}
@@ -6436,7 +6436,7 @@ PrefabInstance:
         type: 3}
       propertyPath: touchPoint
       value: 
-      objectReference: {fileID: 271197809274399845, guid: 4cd940f92e8cb4742be5184bcee5f0bb,
+      objectReference: {fileID: 4746875610356830821, guid: 13b163c1ce7ff38498cd63ef3b683af3,
         type: 3}
     - target: {fileID: 2181930994205698973, guid: aefb0f1b83d375d4ebb3d294efd0f11f,
         type: 3}
