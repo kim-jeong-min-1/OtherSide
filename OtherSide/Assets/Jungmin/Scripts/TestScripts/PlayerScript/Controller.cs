@@ -178,6 +178,7 @@ public partial class Controller : MonoBehaviour
             if (playerHit.transform.GetComponent<Walkable>() != null)
             {
                 currentNode = playerHit.transform;
+                transform.parent = currentNode;
             }
         }
     }
