@@ -155,8 +155,8 @@ public partial class Controller : MonoBehaviour
                 if (walkPathQueue.Count == 0 && path.type != WalkableType.TelePort)
                     walk.Append(tween).OnComplete(() => StopWalking());
                 else if (tween != null)
-                    walk.Append(tween);
-                transform.SetParent(path.transform);
+                    walk.Append(tween).OnComplete(() => { transform.SetParent(path.transform); });
+                
             }
             #region È¸Àü
 
@@ -178,7 +178,7 @@ public partial class Controller : MonoBehaviour
             if (playerHit.transform.GetComponent<Walkable>() != null)
             {
                 currentNode = playerHit.transform;
-                transform.parent = currentNode;
+                //transform.parent = currentNode;
             }
         }
     }

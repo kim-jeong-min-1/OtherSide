@@ -27,7 +27,7 @@ public class InteractBrain : MonoBehaviour
                     if (currentStage.player1.isWalking) currentStage.player1.StopWalking();
                     if (currentStage.player2.isWalking) currentStage.player2.StopWalking();
 
-                    currentStage.player1.transform.SetParent(currentStage.player1.targetNode);
+                    //currentStage.player1.transform.SetParent(currentStage.player1.targetNode);
                     //currentStage.player2.transform.SetParent(currentStage.player2.targetNode);
 
                     isActive = true;
