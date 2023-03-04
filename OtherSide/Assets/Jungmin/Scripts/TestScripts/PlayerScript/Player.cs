@@ -63,7 +63,7 @@ public class Player : Controller
     {
         if (MovePlayerDecision != null)
         {
-            yield return new WaitUntil(() => OtherPlayer.isEndBuild);
+            if(OtherPlayer.isOn) yield return new WaitUntil(() => OtherPlayer.isEndBuild);
             if (!MovePlayerDecision(OtherPlayer.nodeCount))
             {
                 StopWalking();
@@ -101,6 +101,13 @@ public class Player : Controller
 
         this.targetNode = target;
         FindPathAndWalking();
+    }
+
+    protected override void RayCheckToCurrentNode()
+    {
+        base.RayCheckToCurrentNode();
+        if (currentNode == null) return;
+        if (currentNode.GetComponent<Walkable>().type == WalkableType.ClearPortal) isOn = false;
     }
 
 }
