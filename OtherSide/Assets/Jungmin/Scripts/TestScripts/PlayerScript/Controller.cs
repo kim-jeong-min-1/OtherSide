@@ -168,7 +168,7 @@ public partial class Controller : MonoBehaviour
         yield break;
     }
 
-    private void RayCheckToCurrentNode()
+    protected virtual void RayCheckToCurrentNode()
     {
         Ray ray = new Ray(transform.GetChild(0).transform.position, -transform.up);
         RaycastHit playerHit;
