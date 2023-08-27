@@ -7369,6 +7369,7 @@ MonoBehaviour:
   targetNode: {fileID: 0}
   isWalking: 0
   playerType: 0
+  isOn: 1
   OtherPlayer: {fileID: 2181930994140572988}
   touchPoint: {fileID: 271197809274399845, guid: f19a5bc0d89918b45b580a4db922924b,
     type: 3}
@@ -19056,6 +19057,7 @@ MonoBehaviour:
   targetNode: {fileID: 0}
   isWalking: 0
   playerType: 0
+  isOn: 1
   OtherPlayer: {fileID: 1080080758}
   touchPoint: {fileID: 271197809274399845, guid: f19a5bc0d89918b45b580a4db922924b,
     type: 3}

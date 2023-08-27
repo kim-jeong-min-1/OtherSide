@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
+using Unity.VisualScripting;
 
 public abstract class StageManager : MonoBehaviour
 {
@@ -10,17 +13,19 @@ public abstract class StageManager : MonoBehaviour
     [SerializeField] protected Transform[] portal;
     [SerializeField] public Player player1;
     [SerializeField] public Player player2;
+    private Volume postProcessingVolume;
+    private ColorAdjustments colorAdjustments;
 
     protected string nextSceneName;
     public void ConnectPathOfStage()
     {
-        foreach(PathCondition condition in pathConditions)
+        foreach (PathCondition condition in pathConditions)
         {
             if (!condition.interactionObject.isInteract) continue;
 
             var interact = condition.interactionObject;
 
-            Vector3 checkVector = 
+            Vector3 checkVector =
                 (interact.interactType == InteractType.Rotate) ? interact.interactionAngle : interact.interactionPosition;
 
             if ((condition.activeValue == checkVector))
@@ -34,15 +39,42 @@ public abstract class StageManager : MonoBehaviour
             }
         }
     }
+    protected virtual void Awake()
+    {
+        postProcessingVolume = GameObject.Find("Global Volume").GetComponent<Volume>();
+    }
 
     protected virtual void Update()
     {
         if (isClearStage) return;
-        if(pathConditions.Count > 0) ConnectPathOfStage();
+        if (pathConditions.Count > 0) ConnectPathOfStage();
         ClearCheck();
     }
 
     protected abstract void StageClear();
+
+    protected IEnumerator StageSaturation()
+    {
+        if (postProcessingVolume.profile.TryGet(out colorAdjustments))
+        {
+
+            // saturation 값을 조절하는 코드
+
+            float t = 0;
+
+            while (t < 1f)
+            {
+
+                yield return null;
+
+                t += Time.deltaTime;
+
+                colorAdjustments.saturation.value = Mathf.Lerp(-100f, 0f, t / 1f);
+            }
+            print("End");
+        }
+    }
+
     protected abstract void ClearCheck();
     protected void LayerChange(Transform transform, int layer)
     {

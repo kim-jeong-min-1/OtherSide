@@ -89,12 +89,17 @@ public class Stage1_1 : StageManager
         SoundManager.Instance.PlayBGM(1, 0.1f);
         for (int i = 0; i < obj.Length; i++)
         {
-            var v = obj[i].position;
-            obj[i].DOMove(new Vector3(v.x, v.y + 30f, v.z), 2.5f).SetEase(Ease.OutQuad);
-            yield return new WaitForSeconds(1 + i);
+            //var v = obj[i].position;
+            //obj[i].DOMove(new Vector3(v.x, v.y + 30f, v.z), 2.5f).SetEase(Ease.OutQuad);
+            //yield return new WaitForSeconds(1 + i);
             obj[i].gameObject.isStatic = true;
         }
+
+
+
         player1.isOn = true; player2.isOn = true;
         StartCoroutine(CloudMove(1));
+
+        yield return null;
     }
 }

@@ -4,10 +4,13 @@ using UnityEngine;
 using Event = ProductionEvent.Event;
 using Jungmin;
 using DG.Tweening;
+using static Unity.VisualScripting.Metadata;
+using UnityEditor;
 
 public class Stage1 : StageManager
 {
     [SerializeField] private Transform[] obj;
+
 
     private void Start() => StartCoroutine(Stage1_Start());
 
@@ -35,11 +38,12 @@ public class Stage1 : StageManager
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(0.08f);
-        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
-        yield return new WaitForSeconds(3f);
+        StartCoroutine(StageSaturation());
+        //StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+        //yield return new WaitForSeconds(3f);
 
         nextSceneName = "Stage1_1";
-        GameManager.Instance.LoadStage(nextSceneName);
+        //GameManager.Instance.LoadStage(nextSceneName);
 
         yield break;
     }
@@ -53,19 +57,21 @@ public class Stage1 : StageManager
         yield break;
     }
 
+
     private IEnumerator Stage1_Start()
     {
         StartCoroutine(Event.CameraMove(Camera.main, Camera.main.transform.position + Vector3.up * -6, 180f));
         SoundManager.Instance.PlayBGM(1, 0.1f);
         yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < 3; i++)
-        {
-            var v = obj[i].position;
-            obj[i].DOMove(new Vector3(v.x, v.y + 30f, v.z), 2.5f).SetEase(Ease.OutQuad);
-            yield return new WaitForSeconds(1 + i);
-            obj[i].gameObject.isStatic = true;
-        }
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    var v = obj[i].position;
+        //    obj[i].DOMove(new Vector3(v.x, v.y + 30f, v.z), 2.5f).SetEase(Ease.OutQuad);
+        //    yield return new WaitForSeconds(1 + i);
+        //    obj[i].gameObject.isStatic = true;
+        //}
+
 
         player1.isOn = true; player2.isOn = true;
         StartCoroutine(CloudMove(1));

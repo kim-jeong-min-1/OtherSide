@@ -73,7 +73,7 @@ public class Stage5 : StageManager
     private IEnumerator Stage5_Start()
     {
         SoundManager.Instance.PlayBGM(5, 0.1f);
-        obj.DOMove(new Vector3(obj.position.x, obj.position.y + 22f, obj.position.z), 2.5f).SetEase(Ease.OutElastic);
+        //obj.DOMove(new Vector3(obj.position.x, obj.position.y + 22f, obj.position.z), 2.5f).SetEase(Ease.OutElastic);
         yield return new WaitForSeconds(2.5f);
         player1.isOn = true; player2.isOn = true;
     }
