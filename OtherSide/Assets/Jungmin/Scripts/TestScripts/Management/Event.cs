@@ -11,6 +11,8 @@ namespace ProductionEvent
     {
         public static IEnumerator FadeIn(Image image)
         {
+            image.gameObject.SetActive(true);
+
             Color color1 = image.color;
             color1.a = 0;
             image.color = color1;
@@ -43,6 +45,8 @@ namespace ProductionEvent
 
                 yield return new WaitForFixedUpdate();
             }
+
+            image.gameObject.SetActive(false);
         }
 
         public static IEnumerator CameraZoom(Camera camera, float size, float time)

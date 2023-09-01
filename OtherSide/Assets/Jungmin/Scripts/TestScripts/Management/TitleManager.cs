@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Event = ProductionEvent.Event;
 using Jungmin;
+using DG.Tweening;
 
 public class TitleManager : MonoBehaviour
 {
@@ -12,11 +12,15 @@ public class TitleManager : MonoBehaviour
     [SerializeField] GameObject Logo;
     private bool isOneTime = false;
     private bool isAlready = false;
+
+    [SerializeField] GameObject StageSelectWnd;
+    [SerializeField] Image StageSelectWndBG;
+
     // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine(TitleStart());
-        StartCoroutine(TextAlpha(-1));
     }
 
     // Update is called once per frame
@@ -29,12 +33,13 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.anyKey && !isOneTime && isAlready)
         {
-            StartCoroutine(StartGame());
+            StageSelectWndOn();
             isOneTime = true;
         }
     }
     IEnumerator TitleStart()
     {
+
         yield return new WaitForSeconds(3.5f);
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
 
@@ -43,16 +48,34 @@ public class TitleManager : MonoBehaviour
         StartCoroutine(Event.FadeOut(GameManager.Instance.fadeImage));
 
         yield return new WaitForSeconds(2f);
+
         isAlready = true;
         SoundManager.Instance.PlayBGM();
+        StartCoroutine(TextAlpha(-1));
+
     }
 
-    IEnumerator StartGame()
+    private void StageSelectWndOn()
+    {
+        StageSelectWndBG.DOFade(0.1f,1);
+        StageSelectWnd.transform.DOLocalMoveY(0,1);
+
+        StageSelectWnd.SetActive(true);
+    }
+
+    public void StageSelectBtn(string stageName)
+    {
+        GameManager.Instance.fadeImage.gameObject.SetActive(true);
+
+        StartCoroutine(StartGame(stageName));
+    }
+
+    IEnumerator StartGame(string stageName)
     {
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3);
         SoundManager.Instance.StopBGM();
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene(stageName);
     }
 
     IEnumerator TextAlpha(int sign)

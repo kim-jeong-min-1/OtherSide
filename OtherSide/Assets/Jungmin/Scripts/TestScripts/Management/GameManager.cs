@@ -27,6 +27,7 @@ namespace Jungmin
 
         public void LoadStage(string stageName)
         {
+            fadeImage.gameObject.SetActive(true);
             SceneManager.LoadScene(stageName);
         }
 

@@ -40,10 +40,12 @@ public class Stage1 : StageManager
         yield return new WaitForSeconds(0.08f);
         StartCoroutine(StageSaturation());
         //StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
-        //yield return new WaitForSeconds(3f);
-
+        yield return new WaitForSeconds(3f);
+        setting.ClearWnd();
         nextSceneName = "Stage1_1";
         //GameManager.Instance.LoadStage(nextSceneName);
+
+
 
         yield break;
     }

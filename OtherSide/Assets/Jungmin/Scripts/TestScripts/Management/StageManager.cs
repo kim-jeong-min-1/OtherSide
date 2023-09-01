@@ -16,6 +16,8 @@ public abstract class StageManager : MonoBehaviour
     private Volume postProcessingVolume;
     private ColorAdjustments colorAdjustments;
 
+    [SerializeField] protected Setting setting;
+
     protected string nextSceneName;
     public void ConnectPathOfStage()
     {
