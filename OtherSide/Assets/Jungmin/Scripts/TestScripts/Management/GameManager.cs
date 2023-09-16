@@ -35,6 +35,7 @@ namespace Jungmin
             StageCheck(stageName);
 
             fadeImage.gameObject.SetActive(true);
+
             SceneManager.LoadScene(stageName);
         }
 
@@ -52,6 +53,8 @@ namespace Jungmin
 
         private void SaveGame()
         {
+            stageData.isLoadData = false;
+
             // 게임 데이터를 저장
             string jsonData = JsonUtility.ToJson(stageData);
             PlayerPrefs.SetString("GameData", jsonData);
@@ -68,10 +71,11 @@ namespace Jungmin
                // stageData = JsonUtility.FromJson<StageDatas>(jsonData);
             }
 
+            stageData.isLoadData = true; 
         }
 
 
-        private int StageCheck(string str)
+        private void StageCheck(string str)
         {
             int num = 0;
             switch (str) 
@@ -90,8 +94,6 @@ namespace Jungmin
             }
 
             if(num < 10) stageData.lastPlayStage = num;
-
-            return num;
         }
 
     }

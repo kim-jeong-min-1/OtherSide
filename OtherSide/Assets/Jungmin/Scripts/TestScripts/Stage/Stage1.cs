@@ -35,7 +35,7 @@ public class Stage1 : StageManager
 
     private IEnumerator Stage1ClearEvent()
     {
-       // GameManager.Instance.stageData.clearStage[0] = true;
+        GameManager.Instance.stageData.clearStage[0] = true;
 
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);

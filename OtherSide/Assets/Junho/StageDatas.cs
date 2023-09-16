@@ -9,7 +9,9 @@ public class StageDatas : ScriptableObject
     public int lastPlayStage;
     public int bestStage;
     public bool gameAllClear;
-
     public bool[] clearStage = new bool[12];
+
+    public bool isLoadData = false;
+
 
 }

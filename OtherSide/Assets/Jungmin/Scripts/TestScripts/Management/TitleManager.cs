@@ -20,6 +20,8 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(TitleStart());
+
+        if(GameManager.Instance.stageData.isLoadData == false)
         GameManager.Instance.LoadGame();
     }
 

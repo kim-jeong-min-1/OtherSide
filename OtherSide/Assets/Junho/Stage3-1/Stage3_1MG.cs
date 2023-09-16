@@ -144,6 +144,7 @@ public class Stage3_1MG : MonoBehaviour
 
     private IEnumerator StageClearEvent()
     {
+        GameManager.Instance.stageData.clearStage[5] = true;
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(0.08f);
