@@ -10,7 +10,7 @@ public enum ENodeSet
 }
 public class Stage2NodeSet : MonoBehaviour,IObserver
 {
-    [SerializeField] private Stage2ObjMg mg;
+    [SerializeField] private Stage2_1 mg;
     private Walkable myWalkable;
     [SerializeField] private ENodeSet mySet;
     [SerializeField] private List<Node> newSetNode = new List<Node>();

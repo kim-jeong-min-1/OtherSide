@@ -13,14 +13,14 @@ public class TitleManager : MonoBehaviour
     private bool isOneTime = false;
     private bool isAlready = false;
 
-    [SerializeField] GameObject StageSelectWnd;
-    [SerializeField] Image StageSelectWndBG;
-
+    [SerializeField] private GameObject StageSelectWnd;
+    [SerializeField] private Image titleObj;
     // Start is called before the first frame update
 
     void Start()
     {
         StartCoroutine(TitleStart());
+        GameManager.Instance.LoadGame();
     }
 
     // Update is called once per frame
@@ -33,8 +33,8 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.anyKey && !isOneTime && isAlready)
         {
-            StageSelectWndOn();
             isOneTime = true;
+            StageSelectWndOn();
         }
     }
     IEnumerator TitleStart()
@@ -57,8 +57,7 @@ public class TitleManager : MonoBehaviour
 
     private void StageSelectWndOn()
     {
-        StageSelectWndBG.DOFade(0.1f,1);
-        StageSelectWnd.transform.DOLocalMoveY(0,1);
+        titleObj.gameObject.SetActive(false);
 
         StageSelectWnd.SetActive(true);
     }
@@ -93,6 +92,13 @@ public class TitleManager : MonoBehaviour
                 break;
             }
             yield return null;
+
+            if (isOneTime == true)
+            {
+                pText.gameObject.SetActive(false);
+
+                yield break;
+            }
         }
         StartCoroutine(TextAlpha(-sign));
     }

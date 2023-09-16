@@ -78,14 +78,11 @@ public class Stage3 : StageManager
         StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
         StartCoroutine(Event.ObjectAppearance(portal[0].gameObject, portal[0].transform.position + -Vector3.up * 20f, 5f));
         SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.8f, 1, 3.5f);
+
+
+        StartCoroutine(StageSaturation());
         yield return new WaitForSeconds(3f);
-
-        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
-        yield return new WaitForSeconds(3f);
-
-        nextSceneName = "Stage3_1";
-        GameManager.Instance.LoadStage(nextSceneName);
-
+        setting.ClearWnd();
         yield break;
     }
 }

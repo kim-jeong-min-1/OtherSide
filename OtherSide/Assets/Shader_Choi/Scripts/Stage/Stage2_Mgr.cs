@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 using Event = ProductionEvent.Event;
 using GameManager = Jungmin.GameManager;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class Stage2_Mgr : MonoBehaviour
 {
@@ -11,7 +13,16 @@ public class Stage2_Mgr : MonoBehaviour
     [SerializeField] private Transform EndPoint1;
     private bool Ending = false;
 
-    // Start is called before the first frame update
+    private Volume postProcessingVolume;
+    private ColorAdjustments colorAdjustments;
+
+    [SerializeField] protected Setting setting;
+
+    private void Awake()
+    {
+        postProcessingVolume = GameObject.Find("Global Volume").GetComponent<Volume>();
+    }
+
     void Start()
     {
         //StartCoroutine(Cam_Ctrl.Move(Camera.main.gameObject, 
@@ -19,7 +30,6 @@ public class Stage2_Mgr : MonoBehaviour
         StartCoroutine(Stage2_Start());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (p1.currentNode == EndPoint1 && !Ending)
@@ -50,13 +60,37 @@ public class Stage2_Mgr : MonoBehaviour
 
     private IEnumerator End()
     {
+        GameManager.Instance.stageData.clearStage[2] = true;
+
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
-        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+
+        yield return new WaitForSeconds(0.08f);
+        StartCoroutine(StageSaturation());
         yield return new WaitForSeconds(3f);
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Stage2_1");
-
+        setting.ClearWnd();
         yield break;
+    }
+
+    private IEnumerator StageSaturation()
+    {
+        if (postProcessingVolume.profile.TryGet(out colorAdjustments))
+        {
+
+            // saturation 값을 조절하는 코드
+
+            float t = 0;
+
+            while (t < 1f)
+            {
+
+                yield return null;
+
+                t += Time.deltaTime;
+
+                colorAdjustments.saturation.value = Mathf.Lerp(-100f, 0f, t / 1f);
+            }
+        }
     }
 }

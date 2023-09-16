@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Event = ProductionEvent.Event;
 using Jungmin;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 public class Stage3_1MG : MonoBehaviour
 {
     [SerializeField] private Walkable[] floor1;
@@ -18,6 +20,16 @@ public class Stage3_1MG : MonoBehaviour
     private bool p1Clear = false;
     private bool p2Clear = false;
     private bool isClear = false;
+
+    private Volume postProcessingVolume;
+    private ColorAdjustments colorAdjustments;
+
+    [SerializeField] protected Setting setting;
+
+    private void Awake()
+    {
+        postProcessingVolume = GameObject.Find("Global Volume").GetComponent<Volume>();
+    }
     public void StartChangeNode(bool floor)
     {
         if (floor)
@@ -135,13 +147,31 @@ public class Stage3_1MG : MonoBehaviour
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(0.08f);
-        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+        StartCoroutine(StageSaturation());
         yield return new WaitForSeconds(3f);
-
-        string nextSceneName = "Stage4";
-        GameManager.Instance.LoadStage(nextSceneName);
-
+        setting.ClearWnd();
         yield break;
     }
 
+
+    private IEnumerator StageSaturation()
+    {
+        if (postProcessingVolume.profile.TryGet(out colorAdjustments))
+        {
+
+            // saturation 값을 조절하는 코드
+
+            float t = 0;
+
+            while (t < 1f)
+            {
+
+                yield return null;
+
+                t += Time.deltaTime;
+
+                colorAdjustments.saturation.value = Mathf.Lerp(-100f, 0f, t / 1f);
+            }
+        }
+    }
 }

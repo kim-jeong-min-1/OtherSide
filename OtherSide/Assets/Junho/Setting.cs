@@ -50,4 +50,11 @@ public class Setting : MonoBehaviour
         GameManager.Instance.LoadStage(nextStageName);
     }
 
+    public void RePlayBtn(string thisStageName)
+    {
+        Time.timeScale = 1;
+        GameManager.Instance.LoadStage(thisStageName);
+
+    }
+
 }

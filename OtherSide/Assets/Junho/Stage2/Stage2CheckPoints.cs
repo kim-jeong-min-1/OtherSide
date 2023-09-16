@@ -6,7 +6,7 @@ public class Stage2CheckPoints : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private Player player1;
-    [SerializeField] private Stage2ObjMg Stage2Objs;
+    [SerializeField] private Stage2_1 Stage2Objs;
 
     [SerializeField] private bool isWhite = true;
     [SerializeField] private bool isOn = false;

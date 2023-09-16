@@ -42,13 +42,9 @@ public class Stage5 : StageManager
         player1.gameObject.SetActive(false);
         player2.gameObject.SetActive(false);
         LayerChange(portal[0], 0);
-
-        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+        StartCoroutine(StageSaturation());
         yield return new WaitForSeconds(3f);
-
-        nextSceneName = "Title";
-        GameManager.Instance.LoadStage(nextSceneName);
-
+        setting.ClearWnd();
         yield break;
     }
 

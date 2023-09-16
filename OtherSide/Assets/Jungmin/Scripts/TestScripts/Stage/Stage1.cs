@@ -35,6 +35,8 @@ public class Stage1 : StageManager
 
     private IEnumerator Stage1ClearEvent()
     {
+       // GameManager.Instance.stageData.clearStage[0] = true;
+
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(0.08f);
@@ -42,11 +44,6 @@ public class Stage1 : StageManager
         //StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);
         setting.ClearWnd();
-        nextSceneName = "Stage1_1";
-        //GameManager.Instance.LoadStage(nextSceneName);
-
-
-
         yield break;
     }
 
@@ -64,16 +61,8 @@ public class Stage1 : StageManager
     {
         StartCoroutine(Event.CameraMove(Camera.main, Camera.main.transform.position + Vector3.up * -6, 180f));
         SoundManager.Instance.PlayBGM(1, 0.1f);
+        
         yield return new WaitForSeconds(1f);
-
-        //for (int i = 0; i < 3; i++)
-        //{
-        //    var v = obj[i].position;
-        //    obj[i].DOMove(new Vector3(v.x, v.y + 30f, v.z), 2.5f).SetEase(Ease.OutQuad);
-        //    yield return new WaitForSeconds(1 + i);
-        //    obj[i].gameObject.isStatic = true;
-        //}
-
 
         player1.isOn = true; player2.isOn = true;
         StartCoroutine(CloudMove(1));

@@ -49,12 +49,9 @@ public class Stage4_1 : StageManager
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(0.08f);
-        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+        StartCoroutine(StageSaturation());
         yield return new WaitForSeconds(3f);
-
-        nextSceneName = "Stage5";
-        GameManager.Instance.LoadStage(nextSceneName);
-
+        GameManager.Instance.LoadStage("Title");
         yield break;
     }
 
