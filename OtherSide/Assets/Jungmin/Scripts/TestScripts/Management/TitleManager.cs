@@ -21,7 +21,6 @@ public class TitleManager : MonoBehaviour
     {
         StartCoroutine(TitleStart());
 
-        if(GameManager.Instance.stageData.isLoadData == false)
         GameManager.Instance.LoadGame();
     }
 

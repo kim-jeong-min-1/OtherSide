@@ -1,11 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Event = ProductionEvent.Event;
 using Jungmin;
 using DG.Tweening;
-using static Unity.VisualScripting.Metadata;
-using UnityEditor;
 
 public class Stage1 : StageManager
 {

@@ -16,3 +16,4 @@ MonoBehaviour:
   bestStage: 0
   gameAllClear: 0
   clearStage: 00000000000000000000
+  isLoadData: 0

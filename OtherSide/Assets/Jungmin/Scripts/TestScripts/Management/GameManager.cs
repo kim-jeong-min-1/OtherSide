@@ -53,6 +53,12 @@ namespace Jungmin
 
         private void SaveGame()
         {
+
+            if(stageData == null)
+            {
+                stageData = Resources.Load<StageDatas>("StageData");
+            }
+
             stageData.isLoadData = false;
 
             // 게임 데이터를 저장
@@ -63,6 +69,13 @@ namespace Jungmin
 
         public void LoadGame()
         {
+            if (stageData == null)
+            {
+                stageData = Resources.Load<StageDatas>("StageData");
+            }
+
+            if (stageData.isLoadData == true) return;
+
             // 게임 데이터를 불러오기
             string jsonData = PlayerPrefs.GetString("GameData");
             if (!string.IsNullOrEmpty(jsonData))
