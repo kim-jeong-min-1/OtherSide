@@ -541,7 +541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83733143}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3654747, y: 9.294214, z: 5.3765364}
+  m_LocalPosition: {x: 7.363763, y: -14.188353, z: -6.029127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -566,8 +566,8 @@ Transform:
   - {fileID: 784780789}
   - {fileID: 1886180828}
   - {fileID: 729018149}
-  m_Father: {fileID: 1519814266}
-  m_RootOrder: 3
+  m_Father: {fileID: 449658879}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &100264163
 GameObject:
@@ -1737,6 +1737,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419647196}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &449658878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 449658879}
+  m_Layer: 0
+  m_Name: InteractObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &449658879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449658878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.998288, y: 23.482567, z: 11.4056635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 83733144}
+  m_Father: {fileID: 1519814266}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &483633790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3542,7 +3574,7 @@ MonoBehaviour:
     node: {fileID: 1499077097}
   interactButton1: {fileID: 1848311959}
   interactButton2: {fileID: 1886180828}
-  interactObject: {fileID: 83733143}
+  interactObject: {fileID: 449658878}
   obj:
   - {fileID: 1962726109}
   - {fileID: 1722724157}
@@ -10285,7 +10317,7 @@ Transform:
   - {fileID: 939716176}
   - {fileID: 973311748}
   - {fileID: 2056382606}
-  - {fileID: 83733144}
+  - {fileID: 449658879}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

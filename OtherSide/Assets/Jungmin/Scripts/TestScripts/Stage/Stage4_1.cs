@@ -53,7 +53,7 @@ public class Stage4_1 : StageManager
         yield return new WaitForSeconds(0.08f);
         StartCoroutine(StageSaturation());
         yield return new WaitForSeconds(3f);
-        GameManager.Instance.LoadStage("Title");
+        setting.ClearWnd();
         yield break;
     }
 
