@@ -68,6 +68,8 @@ public class Stage3 : StageManager
 
     private IEnumerator Stage3ClearEvent()
     {
+        GameManager.Instance.stageData.clearStage[4] = true;
+
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(1f);

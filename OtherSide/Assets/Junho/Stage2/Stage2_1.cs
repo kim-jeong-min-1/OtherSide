@@ -96,7 +96,7 @@ public class Stage2_1 : MonoBehaviour
 
     IEnumerator Clear()
     {
-        //GameManager.Instance.stageData.clearStage[3] = true;
+        GameManager.Instance.stageData.clearStage[3] = true;
 
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);

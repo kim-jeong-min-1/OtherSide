@@ -13,6 +13,7 @@ public class StageSelects : MonoBehaviour
     [SerializeField] private Material[] btnMaterials;
     [SerializeField] private MeshRenderer[] btnMesh;
     [SerializeField] private GameObject[] btnLineObjs;
+    [SerializeField] private GameObject[] btns;
 
     [SerializeField] private float scrollSpd;
     [SerializeField] private float rotateSpd;
@@ -83,7 +84,7 @@ public class StageSelects : MonoBehaviour
             {
                 GameObject clickedObject = hit.collider.gameObject;
 
-                if (clickedObject.CompareTag("Btn"))
+                if (clickedObject.CompareTag("Btn") && BestStageChecker() >= isStage)
                     GameManager.Instance.LoadStage(clickedObject.name);
             }
         }
@@ -137,6 +138,11 @@ public class StageSelects : MonoBehaviour
             }
         }
 
+
+        foreach (var btn in btns) btn.tag = "Untagged";
+
+        btns[isStage].tag = "Btn";
+
         transform.DOMove(pos[isStage], scrollSpd).SetEase(Ease.InSine).OnComplete(() => isScroll = false);
         RotateRandomly();
 
@@ -144,7 +150,7 @@ public class StageSelects : MonoBehaviour
 
     private void RotateRandomly()
     {
-        // 무작위 시드값으로 회전
+        // 무작위 값으로 회전
 
         foreach (var btn in btnLineObjs)
         {

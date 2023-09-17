@@ -202,7 +202,7 @@ public class Stage5_1 : StageManager
 
     private IEnumerator StageClearEvent()
     {
-        GameManager.Instance.stageData.clearStage[8] = true;
+        GameManager.Instance.stageData.clearStage[9] = true;
 
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
