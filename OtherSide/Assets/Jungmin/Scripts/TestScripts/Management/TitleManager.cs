@@ -15,6 +15,9 @@ public class TitleManager : MonoBehaviour
 
     [SerializeField] private GameObject StageSelectWnd;
     [SerializeField] private Image titleObj;
+
+    [SerializeField] private Tutorial tutorialStage;
+    public bool isTutorialClear = false;
     // Start is called before the first frame update
 
     void Start()
@@ -27,6 +30,7 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isTutorialClear == true)
         PressKey();
     }
 
@@ -48,12 +52,23 @@ public class TitleManager : MonoBehaviour
         Logo.gameObject.SetActive(false);
         StartCoroutine(Event.FadeOut(GameManager.Instance.fadeImage));
 
+        tutorialStage.StartSet();
+
         yield return new WaitForSeconds(2f);
 
-        isAlready = true;
         SoundManager.Instance.PlayBGM();
-        StartCoroutine(TextAlpha(-1));
 
+        
+
+    }
+
+    public void TutorialClearTitleStart()
+    {
+        titleObj.gameObject.SetActive(true);
+        pText.gameObject.SetActive(true);
+
+        isAlready = true;
+        StartCoroutine(TextAlpha(-1));
     }
 
     private void StageSelectWndOn()

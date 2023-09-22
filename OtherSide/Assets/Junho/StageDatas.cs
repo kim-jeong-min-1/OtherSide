@@ -12,6 +12,6 @@ public class StageDatas : ScriptableObject
     public bool[] clearStage = new bool[12];
 
     public bool isLoadData = false;
-
+    public bool isTutorialClear = false;
 
 }

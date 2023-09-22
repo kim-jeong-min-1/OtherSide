@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 using Unity.VisualScripting;
-
+using DG.Tweening;
 public abstract class StageManager : MonoBehaviour
 {
     [HideInInspector] public bool isClearStage = false;
@@ -13,8 +13,8 @@ public abstract class StageManager : MonoBehaviour
     [SerializeField] protected Transform[] portal;
     [SerializeField] public Player player1;
     [SerializeField] public Player player2;
-    private Volume postProcessingVolume;
-    private ColorAdjustments colorAdjustments;
+    protected Volume postProcessingVolume;
+    protected ColorAdjustments colorAdjustments;
 
     [SerializeField] protected Setting setting;
 
